@@ -15,19 +15,20 @@ import com.example.apppokedex.R
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_Splash)
         setContentView(R.layout.activity_splash)
 
-        if (checkForInternet(this)){
+        if (checkForInternet(this@SplashActivity)){
             changeToList()
         }
         else{
-            Toast.makeText(this, R.string.erro_internet, Toast.LENGTH_LONG).show()
+            Toast.makeText(this@SplashActivity, R.string.erro_internet, Toast.LENGTH_LONG).show()
             finish()
         }
     }
 
     fun changeToList(){
-        val intent = Intent(this, ListActivity::class.java)
+        val intent = Intent(this@SplashActivity, ListActivity::class.java)
         Handler(Looper.getMainLooper()).postDelayed({
             intent.change()
             finish()
@@ -39,6 +40,7 @@ class SplashActivity : AppCompatActivity() {
         finish()
     }
 
+    //verificando se tem internet
     private fun checkForInternet(context: Context): Boolean{
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){

@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.apppokedex.R
 import com.example.apppokedex.domain.Pokemon
 
-
 class PokemonAdapter(
     private val items: List<Pokemon>
 ) : RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
