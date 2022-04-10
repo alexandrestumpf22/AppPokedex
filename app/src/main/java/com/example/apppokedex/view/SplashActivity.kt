@@ -1,6 +1,5 @@
-package com.example.apppokedex
+package com.example.apppokedex.view
 
-import android.app.ListActivity
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +10,7 @@ import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
+import com.example.apppokedex.R
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +27,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     fun changeToList(){
-        val intent = Intent(this, com.example.apppokedex.ListActivity::class.java)
+        val intent = Intent(this, ListActivity::class.java)
         Handler(Looper.getMainLooper()).postDelayed({
             intent.change()
             finish()
