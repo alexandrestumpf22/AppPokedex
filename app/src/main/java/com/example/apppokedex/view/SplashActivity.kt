@@ -9,14 +9,20 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
+import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import android.widget.Toast
 import com.example.apppokedex.R
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTheme(R.style.Theme_Splash)
         setContentView(R.layout.activity_splash)
+
+        val backgroudImg : ImageView = findViewById(R.id.ivLogo)
+        val sideAnimation = AnimationUtils.loadAnimation(this@SplashActivity, R.anim.slide)
+        backgroudImg.startAnimation(sideAnimation)
+
 
         if (checkForInternet(this@SplashActivity)){
             changeToList()
@@ -32,7 +38,7 @@ class SplashActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             intent.change()
             finish()
-        },5000)
+        },3000)
     }
 
     fun Intent.change(){

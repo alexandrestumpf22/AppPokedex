@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.apppokedex.R
 import com.example.apppokedex.domain.Pokemon
+import java.util.*
 
 class PokemonAdapter(
     private val items: List<Pokemon?>
@@ -29,8 +30,9 @@ class PokemonAdapter(
     }
 
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+
         @SuppressLint("SetTextI18n")
-        @Suppress("DEPRECATION")
+
         fun bindView(item: Pokemon?) = with(itemView){
             val ivPokemon = findViewById<ImageView>(R.id.ivPokemon)
             val tvNumero = findViewById<TextView>(R.id.tvNumero)
@@ -45,11 +47,11 @@ class PokemonAdapter(
 
                 tvNumero.text = "Nº ${item.formattedNumber}"
                 tvNome.text = item.formattedName
-                tvType1.text = item.type[0].name.capitalize()
+                tvType1.text = item.type[0].name.replaceFirstChar { it.titlecase(Locale.getDefault()) }
 
                 if (item.type.size > 1) {
                     tvType2.visibility = View.VISIBLE
-                    tvType2.text = item.type[1].name.capitalize()
+                    tvType2.text = item.type[1].name.replaceFirstChar { it.titlecase(Locale.getDefault()) }
                 }
                 else{
                     tvType2.visibility = View.GONE
